@@ -1,5 +1,6 @@
-# gapp_automization
+# Shuss handy scripts
 
-Series of scripts to automate common tasks that I do on various Google applications 
-(Calendar, Tasks, etc). Mostly meant for me but providing for colleagues and friends 
-to use.
+Series of scripts to automate common tasks and to do lookups for meand to do lookups for me. Includes scripts for:
+
+* inserting common tasks into Google Tasks
+* download upcoming weeks events from Google Calendar, etc

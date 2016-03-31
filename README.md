@@ -1,6 +1,6 @@
 # Shuss handy scripts
 
-Series of scripts to automate common tasks and to do lookups for meand to do lookups for me. Includes scripts for:
+Series of scripts to automate common tasks and to do lookups for me. Includes scripts for:
 
 * inserting common tasks into Google Tasks
-* download upcoming weeks events from Google Calendar, etc
+* download upcoming weeks events from Google Calendar, etc.

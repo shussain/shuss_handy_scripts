@@ -2,7 +2,7 @@
 #
 # Modified from Google sample site
 
-""" Command-line application for insert defautl tasks into a task list.
+""" Command-line application for insert default tasks into a task list.
     For the use case, where you have the same tasks for week day (log hours,
     check mail, etc) and slightly different tasks for weekends.
 

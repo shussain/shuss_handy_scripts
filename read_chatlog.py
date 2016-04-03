@@ -4,7 +4,7 @@
     This script parses Empathy chat logs (in XML) and outputs
     human readable text.
 
-    ./parse_chatlog.py [filename]
+    ./read_chatlog.py [filename]
 
     NOTE: Location of Empathy logs is at: $HOME/.local/share/TpLogger/logs
 
@@ -16,7 +16,7 @@
 import sys, os
 from xml.dom import minidom
 
-USAGE = './parse_chatlog.py filename'
+USAGE = './read_chatlog.py filename'
 if len(sys.argv) != 2:
     print "Following the following usage:"
     print "\t" + USAGE

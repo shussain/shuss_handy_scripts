@@ -2,7 +2,7 @@
 
 """
 Preparation
-    sudo apt-cache show python-beautifulsoup
+    sudo apt-get install python-beautifulsoup
 
 Script to use it:
     getamazon.py > /tmp/weather.txt; mailx -s 'amazon prices'  habibilus@gmail.com < /tmp/weather.txt

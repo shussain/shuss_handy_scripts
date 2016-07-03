@@ -13,6 +13,7 @@ import urllib2
 from BeautifulSoup import BeautifulSoup
 
 site='http://www.amazon.ca/gp/product/'
+headers={ 'User-Agent' : 'Mozilla/5.0' }
 
 def try_get_price(soup, attr_type, attr_value):
     price = None
@@ -26,8 +27,12 @@ def try_get_price(soup, attr_type, attr_value):
 
 
 def getprice(description, contentlink):
-    page  = urllib2.urlopen(site+contentlink)
-    soup  = BeautifulSoup(page)
+    url= site+contentlink
+    #print url
+
+    req  = urllib2.Request(url, None, headers)
+    page = urllib2.urlopen(req).read()
+    soup = BeautifulSoup(page)
 
     price = try_get_price(soup, "id", "priceblock_ourprice")
     if not price: price = try_get_price(soup, "id", "priceblock_dealprice")

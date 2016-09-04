@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Script that outpust the day's forecast. It uses the Canadian government's
+Script that outputs the day's forecast. It uses the Canadian government's
 weather info for the daily forecast.
 
 Requirement

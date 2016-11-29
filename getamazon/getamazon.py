@@ -5,7 +5,7 @@ Preparation
     sudo apt-get install python-beautifulsoup
 
 Script to use it:
-    getamazon.py > /tmp/weather.txt; mailx -s 'amazon prices'  habibilus@gmail.com < /tmp/weather.txt
+    getamazon.py > /tmp/amazon.txt; mailx -s 'amazon prices'  shussain@xelerance.com < /tmp/amazon.txt
 """
 
 from time import sleep
@@ -52,7 +52,7 @@ urllib2.urlopen('http://www.amazon.ca')
 # description, item price
 # e.g.  Kenneth cole New York watch, B017WS9NT6
 
-f = open('/home/habibilus/bin/amazon_price.txt', 'r')
+f = open('/home/shussain/bin/amazon_price.txt', 'r')
 for line in f:
     #print line
     description, contentlink = line.split(',')

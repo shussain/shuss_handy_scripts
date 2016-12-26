@@ -72,7 +72,7 @@ def get_credentials():
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,
-                                   'calendar-python-quickstart.json')
+                                   'calendar-upcomingweek.json')
 
     store = oauth2client.file.Storage(credential_path)
     credentials = store.get()

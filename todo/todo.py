@@ -193,11 +193,11 @@ def main():
     if not emailList: exit()
 
     for email in emailList:
+        # Add email subject line to task list
         time_period(task_service, tasklist_id, email['Subject'])
+        # relabel it to readTodo and then place it in the trash
         modifyEmail(gmail_service, email['emailID'])
-
-
-
+        trashEmail(gmail_service, email['emailID'])
 
 
 if __name__ == '__main__':

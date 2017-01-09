@@ -26,9 +26,6 @@ cat runcalendar.sh
 
 
 cat /etc/cron.d/tasks
-
-    # /etc/cron.d/anacron: crontab entries for the anacron package
-
     SHELL=/bin/bash
     PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 

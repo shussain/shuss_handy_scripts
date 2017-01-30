@@ -7,4 +7,4 @@ Includes scripts for:
 * download upcoming weeks events from Google Calendar, etc.
 * get currency conversion rate
 * get date for different time periods
-* Read Empathy chat logs
+* read Empathy chat logs

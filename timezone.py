@@ -13,9 +13,6 @@ def localize_to_tz(tz):
     return tz_time.strftime(fmt)
 
 def print_timezone(location, tz):
-    #print "{} time: {}".format(location, localize_to_tz(tz) )
-    #print "{:<22} time: {}".format(location, localize_to_tz(tz) )
-    #print "{} time: {:>2}".format(location+" time", localize_to_tz(tz) )
     loc = location + " time:"
     print "{:27} {}".format(loc, localize_to_tz(tz) )
 

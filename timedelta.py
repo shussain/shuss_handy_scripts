@@ -28,4 +28,4 @@ percentage_delta = (expected_hour - hours_done) / hours_done
 time_delta = ( expected_hour / (1+PERCENTAGE) ) - hours_done
 
 print("percentage_delta = %0.4f" % percentage_delta)
-print("time delta (Positive is time owed) = %0.4f" % time_delta)
+print("time delta (Positive is time owed to company) = %0.4f" % time_delta)

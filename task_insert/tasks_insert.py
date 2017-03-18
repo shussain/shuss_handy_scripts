@@ -66,19 +66,24 @@ CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), 'client_secrets.json')
 
 TASKS_LISTS_TO_FOLLOW = 'todo_d_daily'
 
-WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-WEEKENDS = ["Saturday/Sunday"]
+DAILY_TASK = [ "DTl", "DT2" ]
 
-WEEKDAY_TASK = ["Read IETF email", "Read programming book",
-                "Watch programming video", "Day focus: ", "Weekly focus: "]
-WEEKEND_TASK = ["Saturday: Kid allowance", "Saturday: watch programming video",
-                "Sunday: Plan for upcoming week", "Sunday: Write week report"]
+WEEK_TASKS = OrderedDict()
+# Reverse order (due to insert)
+WEEK_TASKS["Sunday"] = [  "Sunday 1"    , "Sunday 2"    ]
+WEEK_TASKS["Sat."]   = [  "Saturday 1"  , "Saturday 2"  ]
+WEEK_TASKS["Friday"] = [  "Friday 1"    , "Friday 2"    ]
+WEEK_TASKS["Thur."]  = [  "Thursday 1"  , "Thursday 2"  ]
+WEEK_TASKS["Wed."]   = [  "Wednesday 1" , "Wednesday 2" ]
+WEEK_TASKS["Tues."]  = [  "Tuesday 1"   , "Tuesday 2"   ]
+WEEK_TASKS["Monday"] = [  "Monday 1"    , "Monday 2"    ]
 
-# Reversing order since each newly inserted is at the top (that can
-# change but it helps)
-WEEKDAYS.reverse()
-WEEKDAY_TASK.reverse()
-WEEKEND_TASK.reverse()
+for item in WEEK_TASKS:
+    WEEK_TASKS[item].extend(DAILY_TASK)
+    # Reversing order since each newly inserted is at the top (that can
+    # change but it helps)
+    WEEK_TASKS[item].reverse()
+
 
 # Set up a Flow object to be used for authentication.
 # Add one or more of the following scopes. PLEASE ONLY ADD THE SCOPES YOU
@@ -142,10 +147,8 @@ def main(argv):
         if tasklist[i]['title'] == TASKS_LISTS_TO_FOLLOW:
             tasklist_id = tasklist[i]['id']
 
-    for day in WEEKENDS:
-        time_period(service, tasklist_id, day, WEEKEND_TASK)
-    for day in WEEKDAYS:
-        time_period(service, tasklist_id, day, WEEKDAY_TASK)
+    for day in WEEK_TASKS:
+        time_period(service, tasklist_id, day, WEEK_TASKS[day])
 
   except client.AccessTokenRefreshError:
       print ("The credentials have been revoked or expired, please re-run"

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" Simple script for printing time in time zones I care about. """
+""" Simple script for printing time in different time zones I care about. """
 from datetime import datetime, timedelta
 from pytz import utc, timezone
 
@@ -20,12 +20,12 @@ def print_timezone(location, tz):
 print_timezone("Ottawa", 'US/Eastern')
 print_timezone("Philippine", 'Asia/Manila')
 print_timezone("England", 'Europe/London')
-print_timezone("UTC", 'Etc/UTC')
 print("-----")
 print_timezone("Tokyo", 'Asia/Tokyo')
 print_timezone("Kolkata", 'Asia/Kolkata')
 print_timezone("Karachi (Pakistan)", 'Asia/Karachi')
 print_timezone("Paris", 'Europe/Paris')
+print_timezone("UTC", 'Etc/UTC')
 print("-----")
 print_timezone("Halifax (Nova Scotia)", 'Canada/Atlantic')
 print_timezone("Winnipeg (Manitoba)", 'Canada/Central')

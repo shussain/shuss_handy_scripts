@@ -4,8 +4,8 @@ Series of scripts to automate common tasks.
 
 Includes scripts for:
 * inserting common tasks into Google Tasks
-* download upcoming weeks events from Google Calendar, etc.
-* get Amazon prices
-* get currency conversion rate
-* get date for different time periods
-* read Empathy chat logs
+* downloading upcoming weeks events from Google Calendar, etc.
+* Determining Amazon prices for select items
+* getting currency conversion rate
+* getting date for different time periods
+* reading Empathy chat logs

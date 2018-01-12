@@ -12,7 +12,10 @@ Usage:
 = INSTALLATION =
 
 Get all dependencies
-    sudo apt-get install python-dev build-essential
+    sudo apt-get install python-virtualenv python-dev build-essential
+
+Create folder
+    sudo mkdir -p /data/pythonenv
 
 Install dependencies
     sudo pip install --upgrade google-api-python-client
@@ -44,13 +47,15 @@ You will need to generate a clients_secrets.json file. It can be acquired by goi
 import argparse
 import httplib2
 import os, sys
+import json
+
+from collections import OrderedDict
 
 from apiclient import discovery
 from oauth2client import file
 from oauth2client import client
 from oauth2client import tools
 
-import json
 # Parser for command-line arguments.
 parser = argparse.ArgumentParser(
     description=__doc__,

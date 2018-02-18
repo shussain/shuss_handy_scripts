@@ -3,7 +3,7 @@
 # Get various conversion rate from Google Finance
 
 getCurrency () {
-    GOOGLE_FINANCE="https://www.google.com/finance?q=$1$2"
+    GOOGLE_FINANCE="https://finance.google.com/finance?q=$1$2"
     TEXT_GREP="1 $1 = .* $2"
 
     wget "$GOOGLE_FINANCE" -o /dev/null -O /dev/stdout|grep -e "$TEXT_GREP"|sed 's/<span class=bld>//'|sed 's/<.*>//g'

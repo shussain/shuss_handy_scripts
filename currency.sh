@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Get various conversion rate from Google search
+# Get various conversion rate by scraping Google search.
+#
+# Ideally this would make API calls but the API and usage rules for'
+# most currency conversion sites is far from ideal
 
 
 getCurrency () {

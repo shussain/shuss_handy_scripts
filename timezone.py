@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" Simple script for printing time in different time zones I care about. """
+""" Script for printing time in different time zones I care about. """
 from datetime import datetime, timedelta
 from pytz import utc, timezone
 

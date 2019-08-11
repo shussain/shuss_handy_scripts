@@ -33,58 +33,58 @@ You will need to generate a clients_secrets.json file. It can be acquired by goi
 
 NOTE: Run this script at least once to ensure everything is running and the
 permissions are defined. Afterwards, the cron job can deal with requests
-
 """
 
 from __future__ import print_function
 import httplib2
 import os
 
-from apiclient import discovery
-import oauth2client
-from oauth2client import client
-from oauth2client import tools
-
 import datetime
+import pickle
+import os.path
 
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 
-SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+
 CLIENT_SECRET_FILE = 'client_secrets.json'
-APPLICATION_NAME = 'Google Calendar API'
+APPLICATION_NAME = 'Google Calendar API Python Quickstart'
 
 
-def get_credentials():
+def get_service():
     """Gets valid user credentials from storage.
 
     If nothing has been stored, or if the stored credentials are invalid,
     the OAuth2 flow is completed to obtain the new credentials.
 
     Returns:
-        Credentials, the obtained credential.
+        Services, the obtained service.
     """
-    home_dir = os.path.expanduser('~')
-    credential_dir = os.path.join(home_dir, '.credentials')
-    if not os.path.exists(credential_dir):
-        os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'calendar-upcomingweek.json')
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                'credentials.json', SCOPES)
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
 
-    store = oauth2client.file.Storage(credential_path)
-    credentials = store.get()
-    if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
-        flow.user_agent = APPLICATION_NAME
-        if flags:
-            credentials = tools.run_flow(flow, store, flags)
-        else: # Needed only for compatibility with Python 2.6
-            credentials = tools.run(flow, store)
-        print('Storing credentials to ' + credential_path)
-    return credentials
+    service = build('calendar', 'v3', credentials=creds)
+
+    return service
 
 def main():
     """Shows basic usage of the Google Calendar API.
@@ -93,9 +93,7 @@ def main():
     week events for the user's calendar (not just primary but all calendars)
 
     """
-    credentials = get_credentials()
-    http = credentials.authorize(httplib2.Http())
-    service = discovery.build('calendar', 'v3', http=http)
+    service = get_service()
 
     now  = datetime.datetime.utcnow()
     week = now + datetime.timedelta(weeks = 1)
@@ -137,7 +135,8 @@ def main():
     for events in allevents:
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
-            weeklyevents.append(start + ' ' + event['summary'])
+            if 'summary' in event.keys():
+                weeklyevents.append(start + ' ' + event['summary'])
 
     weeklyevents.sort()
     for events in weeklyevents:

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# This script is primarily for Openswan development. My
+# work flow is to open a tmux session, split the window
+# and ssh into the "left" and "right" VM
+# the left and right VM have a similar IP address in
+# the form of 192.168.X.Y
+#   where X is 123 for left and 126 for right
+#     and Y is the group final address.
+# We use a dictionary to keep the final IPv4 range value
+
+
+host=$1
+user=shussain
+
+# create dictionary structure
+declare -A ip_ranges
+ip_ranges=( ["cn2n"]="2"
+           ["xl2tpd"]="3"
+           ["h2h"]="4"
+           ["dnsh2h"]="5"
+           ["bind"]="6"
+           ["osw"]="7"
+           ["uosw"]="8"
+           ["hc"]="9"
+           ["patientmatter"]="20"
+           ["vincari"]="250"
+           ["l2tpkern"]="12"
+         )
+
+final_ip=${ip_ranges[$host]}
+
+echo "Opening $host"
+
+tmux new-session -d
+tmux rename $host
+tmux split-window -d -t 0 -v
+
+tmux send-keys -t 1 "ssh $user@192.168.126.$final_ip" Enter
+
+tmux send-keys -t 0 "ssh $user@192.168.123.$final_ip" Enter
+
+
+tmux rename $host
+tmux attach

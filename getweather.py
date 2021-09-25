@@ -13,11 +13,11 @@ Script to use it:
 
 from datetime import datetime, timedelta
 import urllib2
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 site='http://dd.weather.gc.ca/citypage_weather/xml/ON/s0000430_e.xml'
 page = urllib2.urlopen(site)
-soup = BeautifulSoup(page)
+soup = BeautifulSoup(page, "html.parser")
 
 tomorrow = datetime.now() + timedelta(days=1)
 tomorrow_title = tomorrow.strftime('%A')
@@ -29,8 +29,8 @@ for forecast in forecasts:
     if period.startswith(tomorrow_title):
         textsummary = forecast('textsummary')[0].string
         temperature = forecast('temperatures')[0]('textsummary')[0].string
-        print period
-        print textsummary
-        print temperature
-        print "-----"
+        print(period)
+        print(textsummary)
+        print(temperature)
+        print("-----")
 

@@ -18,12 +18,13 @@ def print_timezone(location, tz):
 
 # To get a list of time zones: https://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 print_timezone("Ottawa", 'US/Eastern')
+print_timezone("Colombo (Sri Lanka)", 'Asia/Colombo')
 print_timezone("Philippine", 'Asia/Manila')
 print_timezone("Sweden", 'Europe/Stockholm')
 print("-----")
 print_timezone("Tokyo", 'Asia/Tokyo')
-print_timezone("Kolkata", 'Asia/Kolkata')
 print_timezone("Karachi (Pakistan)", 'Asia/Karachi')
+print_timezone("Kolkata", 'Asia/Kolkata')
 print_timezone("Paris", 'Europe/Paris')
 print_timezone("England", 'Europe/London')
 print_timezone("UTC", 'Etc/UTC')

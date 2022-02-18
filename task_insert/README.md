@@ -11,14 +11,15 @@ Usage:
 
 ## Get all dependencies
 
-    `sudo apt-get install python-virtualenv python-dev build-essential`
+    sudo apt-get install python-virtualenv python-dev build-essential
 
 ## Create folder
-    `sudo mkdir -p /data/pythonenv`
+
+    sudo mkdir -p /data/pythonenv
 
 ## Install dependencies
 
-    `sudo pip install --upgrade google-api-python-client`
+    sudo pip install --upgrade google-api-python-client
 
 
 You will need to generate a clients_secrets.json file. It can be acquired by going to:

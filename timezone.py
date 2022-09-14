@@ -18,7 +18,6 @@ def print_timezone(location, tz):
 
 # To get a list of time zones: https://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 print_timezone("Ottawa", 'US/Eastern')
-print_timezone("Colombo (Sri Lanka)", 'Asia/Colombo')
 print_timezone("Philippine", 'Asia/Manila')
 print_timezone("Sweden", 'Europe/Stockholm')
 print("-----")

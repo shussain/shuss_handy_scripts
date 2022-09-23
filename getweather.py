@@ -19,14 +19,14 @@ site='http://dd.weather.gc.ca/citypage_weather/xml/ON/s0000430_e.xml'
 page = urllib2.urlopen(site)
 soup = BeautifulSoup(page, "html.parser")
 
-tomorrow = datetime.now() + timedelta(days=1)
-tomorrow_title = tomorrow.strftime('%A')
+today = datetime.now() # + timedelta(days=1)
+today_title = today.strftime('%A')
 
 forecasts = soup.findAll('forecast')
 
 for forecast in forecasts:
     period = forecast('period')[0].string
-    if period.startswith(tomorrow_title):
+    if period.startswith(today_title):
         textsummary = forecast('textsummary')[0].string
         temperature = forecast('temperatures')[0]('textsummary')[0].string
         print(period)

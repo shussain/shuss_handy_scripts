@@ -14,10 +14,12 @@ def localize_to_tz(tz):
 
 def print_timezone(location, tz):
     loc = location + " time:"
-    print "{:27} {}".format(loc, localize_to_tz(tz) )
+    print "{:27} {}".format( loc, localize_to_tz(tz) )
 
 # To get a list of time zones: https://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 print_timezone("Ottawa", 'US/Eastern')
+print_timezone("Calgary", 'Canada/Mountain')
+print_timezone("Fredrichton", 'America/Halifax')
 print_timezone("Philippine", 'Asia/Manila')
 print_timezone("Sweden", 'Europe/Stockholm')
 print("-----")
@@ -31,5 +33,4 @@ print("-----")
 print_timezone("Halifax (Nova Scotia)", 'Canada/Atlantic')
 print_timezone("Winnipeg (Manitoba)", 'Canada/Central')
 print_timezone("Regina (Saskatchewan)", 'Canada/Saskatchewan')
-print_timezone("Calgary", 'Canada/Mountain')
 print_timezone("Vancouver (BC)", 'Canada/Pacific')
